@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/*Enveloppe tout*/
+* {
+	margin: 0; /*enlever les marges et que la page prenne bien la place disponible*/
+	padding: 0;
+	box-sizing: border-box; /*éviter les blancs à droite, pour que la largeur soit bonne*/
+	font-family: "Montserrat", sans-serif; /*police d'écriture*/
+	scroll-behavior: smooth; /*défilement plus doux quand on a un défilement automatique (ex : retour en haut de page)*/
+}
+
+/*image en haut de la page (derrière la navbar)*/
+.image-accueil {
+	width: 100%; /*pour que l'image prenne toute la place en largeur*/
+	max-width: 100%; /*pour pas que l'image dépasse de la fenêtre*/
+	height: auto; /*pour que la hauteur se règle toute seule*/
+}
+
+/*les 3 éléments (infos livraison et paiement)*/
+.delivery-container {
+	min-height: 300px; /*donne une hauteur au conteneur*/
+	background: white; /*met un fond blanc*/
+	display: flex; /*permet d'aligner les élements cote à cote*/
+	justify-content: space-evenly; /*permet que les éléments s'alignent et soient centrés*/
+	align-items: center; /*centre les élements*/
+}
+
+/*chaque élément*/
+.delivery-container div {
+	display: flex; /*aligne bien les élements entre le texte <p> et l'icone <i>*/
+	flex-direction: column; /*met le texte <p> en dessous de l'icone <i> */
+	align-items: center; /*met les éléments au centre de la boite .delivery-container*/
+}
+
+/*icones*/
+.icone-livraison {
+	font-size: 50px; /*taille de l'icône*/
+	color: #2c3e50; /*couleur de l'icône*/
+}
+
+/*icones et textes*/
+.delivery-container .box-content {
+	font-weight: 500; /*grossit le texte*/
+	font-size: 20px; /*taille de l'écriture*/
+	margin-top: 30px; /*marge entre le texte et l'icône*/
+	width: 220px; /*règle l'espace disponible pour le texte (pour pas qu'il déborde)*/
+	text-align: center; /*centre le texte*/
+}
+
+/*bas de page (footer)*/
+.footer {
+	min-height: 100px; /*donner une taille a la boite .footer*/
+	display: flex;
+	align-items: center; /*mettre les élements au milieu de la boite .footer*/
+	margin-top: 0px; /*marge au dessus du footer*/
+	justify-content: space-between;
+	padding: 0 100px; /*pour se décoller des cotés*/
+	flex-wrap: wrap;
+}
+
+/*© 2020 - Ojimanga.fr*/
+.copyrights {
+	padding-right: 20px;
+}
+
+/*Conditions générales de vente*/
+.conditions {
+	color: black;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+/*taille tablette*/
+@media (max-width: 1150px) {
+
+	.delivery-container {
+		flex-direction: column;
+		justify-content: center;
+		padding: 50px;
+	}
+
+	.delivery-container div {
+		margin: 25px;
+	}
+}
+
+/*taille telephone ou tablette en portrait*/
+@media (max-width: 550px) {
+
+	.footer {
+		justify-content: center;
+	}
+
+}

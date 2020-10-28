@@ -1,0 +1,205 @@
+.header {
+	position: absolute; /*pour que la navbar aille bien en haut*/
+	top: 0px; /*pour que la navbar se colle en haut */
+	height: 220px; /*pour que la navbar descende un peu*/
+	left: 0; right: 0; /*pour que la navbar prenne toute la largeur*/
+	display: flex; /*pour que tout s'aligne*/
+	align-items: center; /*pour que tout s'aligne, au centre) */
+	padding: 0 90px; /*décalage aux cotés*/
+}
+
+.logo {
+	width: 300px;
+}
+
+.nav-links {
+	display: flex; /*pour que les catégories se mettent côte à côte*/
+	list-style: none; /*enlever le point avant les catégories, comme dans les listes*/
+	padding-left: 40px; /*écart entre le logo et les catégories*/
+	align-items: center;
+	flex: 1 1 auto;
+}
+
+.nav-links li {
+	margin: 10px; /*écart entre les catégories*/
+	overflow: hidden; /*cacher le 2e élément qui sert au Responsive*/
+}
+
+.nav-links a {
+	text-decoration: none; /*enlever le surlignage et tout de l'hyperlien*/
+	/*position: relative; permet de pas voir les catégories quand l'écran se rétrécit*/
+	display: block;
+}
+
+.nav-links .categorie {
+	color: white;
+	padding: 12px;
+	border-bottom: 3px solid transparent;
+	transition: border-bottom 0.3s;
+	font-size: 25px; /*taille de l'écriture (catégories)*/
+}
+
+.nav-links .categorie:hover {
+	border-bottom: 3px solid black;
+	background-color: rgba(256,256,256,0.95);
+	color: black;
+}
+
+.nav-links::before {
+	content: attr(data-text); /*récupère le nom des catégories */
+	position: absolute; /*permet que les catégories ne s'affichent pas en double dans le burger*/
+	top: 100%; 
+}
+
+.nav-links .nav-icones {
+	margin-left: auto;
+}
+
+.nav-links .nav-icones + .nav-icones {
+  margin-left: 0;
+}
+
+.nav-links .nav-icones a {
+	color: #2c3e50; /*mettre l'icone en noir*/
+}
+
+.nav-links .nav-icones span {
+	margin-left: 5px;
+	position: absolute;
+	left: -9999px; top: -999px; /*cacher les écritures hord du responsive*/
+}
+
+.burger {
+	display: none;
+}
+
+@media (max-width: 1150px) {
+
+	.header {
+		justify-content: space-between;
+		height : 130px;
+	}
+
+	.burger-container {
+		width: 35px;
+		height: 30px;
+		position: relative;
+	}
+
+	.burger {
+		display: block; /*pour qu'il se mettre bien en face du logo*/
+		height: 3px; /*définit une hauteur de 3px pour le burger*/
+		width: 30px; /*définit une largeur de 30px pour le burger*/
+		background: white; /*définit la couleur du burger*/
+		position: absolute; /*pour qu'il s'aligne bien avec le logo*/
+		left: 50%; /*écarter vers la droite du logo (pour pas qu'ils se collent)*/
+		top: 50%; /*écarte du bord de 50%, pour pas qu'il disparaisse en haut de la page*/
+		transform: translate(-50%, -50%);
+		transition: background 0.4s;
+	}
+
+	.burger-container.active .burger {
+		background: transparent;
+	}
+
+	.burger::before {
+		content: ""; /*pour qu'aucun texte ne s'affiche et que le burger s'affiche bien*/
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: white;
+		bottom: 8px; /*met la petite barre du bas en bas*/
+		transition: transform 0.4s,
+			bottom 0.4s,
+			background 0.4s;
+	}
+
+	.burger-container.active .burger::before {
+		bottom: 0;
+		transform: rotate(-45deg);
+		background: black;
+	}
+
+	.burger::after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: white;
+		top: 8px; /*met la petite barre du haut en haut*/
+		transition: transform 0.4s,
+			top 0.4s background 0.4s;
+	}
+
+	.burger-container.active .burger::after {
+		top: 0;
+		transform: rotate(45deg);
+		background: black;
+	}
+
+	.nav-links {
+		position: absolute;
+		width: 100%;
+		height: 50vh;
+		background: white;
+		left: 0;
+		top: -50vh;
+		transition: top 0.4s ease-in-out;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: flex-start;
+		padding: 0 50px;
+	}
+
+	.nav-links.active {
+		top: 0;
+	}
+
+	.nav-links li {
+		margin: 0;
+	}
+
+	.nav-links .categorie,.nav-icones span {
+		color: black;
+		font-size: 30px;
+	}
+
+
+
+	.nav-links .nav-icones {
+		padding: 9px;
+		margin-left: 0;
+	}
+
+	.nav-links .icone-navbar {
+		font-size: 35px;
+	}
+
+	.nav-links .nav-icones span {
+		position: relative;
+		left: 0px;
+		top: 0px;
+	}
+}
+
+/*taille telephone ou tablette en portrait*/
+@media (max-width: 550px) {
+
+	.logo {
+		width: 200px;
+	}
+
+	.header,
+	.footer {
+		padding: 0 7%;
+	}
+
+	.header {
+		height: 100px;
+	}
+
+	.nav-links a {
+		font-size: 20px;
+	}
+
+}
